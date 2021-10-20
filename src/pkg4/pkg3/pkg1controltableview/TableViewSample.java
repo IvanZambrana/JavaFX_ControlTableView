@@ -14,9 +14,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -61,7 +63,15 @@ public class TableViewSample extends Application {
         firstNameCol.setCellValueFactory(
                 new PropertyValueFactory<>("firstName")
         );
-        
+        //Implementing cell editing for the column "Firs Name"
+        /*firstNameCol.setCellFactory(TextFieldTableCell.<Person>forTableColumn());
+        firstNameCol.setOnEditCommit(
+        (CellEditEvent<Person, String> t) -> {
+        ((Person) t.getTableView().getItems().get(
+            t.getTablePosition().getRow())
+            ).setFirstName(t.getNewValue());
+        });*/
+
         //Creating "Last Name" column
         TableColumn lastNameCol = new TableColumn("Last Name");
         lastNameCol.setMinWidth(100);
